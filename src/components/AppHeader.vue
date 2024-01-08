@@ -82,10 +82,10 @@ export default {
     @use '../styles/generals.scss' as*;
 
     .header{
-        max-width: 991px;
-        margin: 0 auto;
         display: flex;
        justify-content: space-between ;
+       max-width: 991px;
+       margin: 0 auto;
         ul{
             display: flex;
             list-style: none;
