@@ -5,5 +5,7 @@ import HelloWorld from './components/HelloWorld.vue'
 <template>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+@use './styles/partials/variables' as *
+@use  './styles/generals.scss' as *
 </style>
