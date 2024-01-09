@@ -1,6 +1,11 @@
 <script>
+import AppComics from './AppComics.vue'
+
 export default {
     name: 'AppMain',
+    components: {
+        AppComics
+    },
     data() {
         return {
             content: [
@@ -110,17 +115,14 @@ export default {
 
 </script>
 <template lang="">
-    <main>
-        <div class="contenuto"> 
+    <main><div class="contenuto"> 
            <div class="img"></div>
            <div class="containerx" > <button class="current p-1 px-3"> CURRENT SERIES</button> </div>
         <div class="content row">
-            <div class="col-2" v-for="item, index in comics" :key="index">
-            <img class="comics" :src="item.thumb" alt=""> <div class="name">{{item.series}}</div> 
-        </div>  
-        <button class="load_more"> LOAD MORE </button>
+         <AppComics v-for="item, index in comics" :item="item"></AppComics>
+         <button class="load_more"> LOAD MORE </button>
     </div>
-    </div>
+   </div>
         <div class="christian">
         <div class="pellino"    >
         <ul >
