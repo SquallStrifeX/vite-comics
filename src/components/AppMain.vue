@@ -8,7 +8,22 @@ export default {
                     name: 'DIGITAL COMICS',
                     img: '../assets/img/buy-comics-digital-comics.png'
                 },
-                // Puoi aggiungere ulteriori oggetti all'array 'content' se necessario
+                {
+                    name: 'DC MERCHANDISE',
+                    img: '../assets/img/buy-comics-merchandise.png'
+                },
+                {
+                    name: 'SUBSCRIPTION',
+                    img: '../assets/img/buy-comics-subscriptions.png'
+                },
+                {
+                    name: 'COMICS SHOP LOCATOR',
+                    img: '../assets/img/buy-comics-shop-locator.png'
+                },
+                {
+                    name: 'DC POWER VISA',
+                    img: '../assets/img/buy-dc-power-visa.svg'
+                },
             ],
         comics:    [
   {
@@ -86,7 +101,13 @@ export default {
 ]
 }
     },
+    methods: {
+    getImagePath: function(img) {
+      return new URL(`${img}`, import.meta.url).href;
+    }
+  }
 }
+
 </script>
 <template lang="">
     <main>
@@ -94,15 +115,20 @@ export default {
            <div class="img"></div>
            <div class="containerx" > <button class="current p-1 px-3"> CURRENT SERIES</button> </div>
         <div class="content row">
-            <div class="col-2" v-for="index, item in comics" :key="index">
-            <img :src="item.thumb" alt=""> {{item.series}}dfbdbd</div> </div>
+            <div class="col-2" v-for="item, index in comics" :key="index">
+            <img class="comics" :src="item.thumb" alt=""> <div class="name">{{item.series}}</div> 
+        </div>  
+        <button class="load_more"> LOAD MORE </button>
+    </div>
     </div>
         <div class="christian">
-        <div class="pellino"    v-for="(object, index ) in content" :key="index">
-        <ul>
-            <li><img :src=object.img alt="">{{object.name}}</li>
-        </ul> 
+        <div class="pellino"    >
+        <ul >
+            <li v-for="(object, index ) in content" :key="index"><img :src="getImagePath(object.img)" alt=""><span>{{object.name}}</span></li>
+        </ul>  
+       
     </div>
+   
 </div>
     </main>
 </template>
@@ -136,7 +162,25 @@ export default {
             @include max-width;
              color: $white;
              padding: 40px 0px;
-             font-size: 25px
+             font-size: 25px;
+             img{
+                width: 150px;
+                height: 180px
+
+             }
+             .name{
+                font-size: 13px;
+                margin-bottom: 40px;
+             }
+        }
+
+        .load_more{
+            @include max-width;
+            background-color: $blue;
+           color: $white;
+           width: 150px;
+           font-size: 12px;
+           padding: 8px;
         }
          }
         .christian{
@@ -144,7 +188,23 @@ export default {
             .pellino{
              @include max-width;
             padding: 40px 0px;
-            color: $white
+            color: $white;
+            ul{
+                display: flex;
+                flex-direction: row;
+                li{
+                    list-style: none;
+                    font-size: 15px;
+                    padding: 20px;
+                    img{
+                        width: 22px;
+                    }
+                    span{
+                        padding-left: 10px;
+                    }
+
+                }
+            }
         }
         }
         
